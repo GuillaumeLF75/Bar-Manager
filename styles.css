@@ -1,0 +1,1316 @@
+/* Global styles and variables */
+:root {
+    /* Apple Design System Colors */
+    --system-blue: #007AFF;
+    --system-green: #34C759;
+    --system-red: #FF3B30;
+    --system-gray1: #8E8E93;
+    --system-gray2: #AEAEB2;
+    --system-gray5: #E5E5EA;
+    --system-gray6: #F2F2F7;
+    --system-background: #FFFFFF;
+    
+    /* Spacing */
+    --spacing-2xs: 4px;
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    
+    /* Typography */
+    --font-size-caption: 12px;
+    --font-size-footnote: 13px;
+    --font-size-subhead: 15px;
+    --font-size-body: 17px;
+    --font-size-title3: 20px;
+    --font-size-title2: 22px;
+    --font-size-title1: 28px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--system-gray6);
+    color: #000000;
+    line-height: 1.5;
+    margin: 0;
+    padding: var(--spacing-md);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* Menu List Section */
+.menu-list {
+    background-color: var(--system-background);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    margin-bottom: var(--spacing-lg);
+}
+
+.menu-list h2 {
+    font-size: var(--font-size-title1);
+    font-weight: 600;
+    margin: 0 0 var(--spacing-md) 0;
+    letter-spacing: -0.003em;
+}
+
+/* Controls section */
+.menu-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--system-gray5);
+}
+
+/* Table styles */
+.menu-items-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: var(--spacing-md);
+}
+
+.menu-items-table th {
+    text-align: left;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-weight: 600;
+    color: var(--system-gray1);
+    font-size: var(--font-size-footnote);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--system-gray5);
+}
+
+.menu-items-table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--system-gray5);
+    font-size: var(--font-size-subhead);
+}
+
+.menu-items-table tr:last-child td {
+    border-bottom: none;
+}
+
+.menu-items-table tr:hover {
+    background-color: var(--system-gray6);
+}
+
+/* Button styles */
+.edit-btn, .delete-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit-btn {
+    background-color: var(--system-blue);
+    color: white;
+    margin-right: var(--spacing-xs);
+}
+
+.edit-btn:hover {
+    background-color: #0062CC;
+}
+
+.delete-btn {
+    background-color: var(--system-red);
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #D70015;
+}
+
+.delete-btn:disabled {
+    background-color: var(--system-gray1);
+    cursor: not-allowed;
+}
+
+/* Checkbox styles */
+.menu-items-table input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid var(--system-gray5);
+    cursor: pointer;
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: all 0.2s ease;
+}
+
+.menu-items-table input[type="checkbox"]:checked {
+    background-color: var(--system-blue);
+    border-color: var(--system-blue);
+}
+
+.menu-items-table input[type="checkbox"]:checked::after {
+    content: '✓';
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+}
+
+/* Sort indicators */
+.sort-indicator {
+    display: inline-block;
+    margin-left: var(--spacing-xs);
+    color: var(--system-gray1);
+    font-size: 12px;
+}
+
+/* Form styles */
+.menu-form {
+    background-color: var(--system-background);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.menu-form input, .menu-form select {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--system-gray5);
+    border-radius: 10px;
+    font-size: var(--font-size-body);
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+}
+
+.menu-form input:focus, .menu-form select:focus {
+    outline: none;
+    border-color: var(--system-blue);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .menu-controls {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .menu-items-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .container {
+        padding: var(--spacing-sm);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+h1 {
+    background-color: #1a3c5e;
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #1a3c5e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #2a4c6e;
+}
+
+.cocktail-name {
+    margin-bottom: 20px;
+}
+
+.cocktail-name label {
+    margin-right: 10px;
+}
+
+.cocktail-name input {
+    width: 300px;
+}
+
+tfoot tr {
+    font-weight: bold;
+    background-color: #f4f4f4;
+}
+
+.main-header {
+    background-color: #1a3c5e;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-link i {
+    font-size: 1.2rem;
+}
+
+/* Updated styles for better organization */
+.stock-form, .menu-form, .database-view {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.database-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.database-controls input,
+.database-controls select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.database-controls input {
+    flex: 1;
+}
+
+#stockDatabase {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#stockDatabase th,
+#stockDatabase td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#stockDatabase th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #1a3c5e;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.ingredients-section {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+.add-btn {
+    background-color: #1a3c5e;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.stock-list {
+    margin-top: 40px;
+}
+
+.stock-list h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#recentStockTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#recentStockTable th,
+#recentStockTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#recentStockTable th {
+    background-color: #f5f4f4;
+    font-weight: bold;
+}
+
+.ingredient-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    padding-right: 32px;
+}
+
+.ingredient-select {
+    flex: 2;
+}
+
+.quantity-input {
+    flex: 1;
+    min-width: 120px;
+}
+
+.add-ingredient-btn {
+    background-color: #1a3c5e;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-ingredient-btn:hover {
+    background-color: #2a4c6e;
+}
+
+.remove-ingredient-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-ingredient-btn:hover {
+    background-color: #c82333;
+}
+
+.cost-display, .margin-display {
+    padding: 8px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Add these styles for the menu creation form */
+.menu-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.menu-section h3 {
+    color: #1a3c5e;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.ingredients-container {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.ingredient-row {
+    background: white;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.ingredient-select-group {
+    flex: 2;
+}
+
+.ingredient-amount-group {
+    flex: 1;
+}
+
+.unit-display {
+    flex: 0.5;
+    text-align: center;
+}
+
+.unit-text {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 50px;
+    text-align: center;
+}
+
+.add-ingredient-btn {
+    width: 100%;
+    padding: 12px;
+    background: #1a3c5e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.add-ingredient-btn:hover {
+    background: #2a4c6e;
+}
+
+.pricing-container {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.price-display {
+    padding: 8px 12px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.remove-ingredient-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-ingredient-btn:hover {
+    background: #c82333;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background: #45a049;
+}
+
+/* Updated styles for the calculator */
+.calculator-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.name-input {
+    margin-bottom: 20px;
+}
+
+.name-input input {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.calculator-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.calculator-table th,
+.calculator-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.calculator-table th {
+    background-color: #1a3c5e;
+    color: white;
+}
+
+.ingredient-row td {
+    padding: 8px;
+}
+
+.ingredient-row input,
+.ingredient-row select {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.total-row {
+    font-weight: bold;
+    background-color: #f5f5f5;
+}
+
+.calculator-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.add-btn, .calculate-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add-btn {
+    background-color: #1a3c5e;
+    color: white;
+}
+
+.calculate-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.add-btn:hover {
+    background-color: #2a4c6e;
+}
+
+.calculate-btn:hover {
+    background-color: #45a049;
+}
+
+.remove-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+}
+
+/* Simplified styles */
+.simple-calculator {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.name-input {
+    margin-bottom: 20px;
+}
+
+.name-input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.simple-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.simple-table th {
+    background: #1a3c5e;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.simple-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.ingredient-row select,
+.ingredient-row input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.calculator-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.final-price {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.final-price input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 120px;
+}
+
+.add-btn {
+    background: #1a3c5e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.total-row {
+    font-weight: bold;
+}
+
+/* Simplified styles matching the sketch */
+.menu-form {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.menu-form h2 {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-row input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.ingredient-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.form-control {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f8f9fa;
+}
+
+.ingredient-select {
+    flex: 3;
+    min-width: 300px;
+}
+
+.quantity-input {
+    flex: 1;
+    min-width: 80px;
+    max-width: 120px;
+}
+
+.unit-select {
+    width: 60px;
+    padding: 8px 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f8f9fa;
+    font-size: 14px;
+}
+
+.add-btn {
+    padding: 8px 20px;
+    background: #1a3c5e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100px;
+}
+
+/* Style for the datalist dropdown arrow */
+input[list] {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    padding-right: 32px;
+}
+
+/* Add these new styles and keep the existing ones */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.add-to-menu-btn {
+    padding: 12px 24px;
+    background: #1a3c5e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.add-to-menu-btn:hover {
+    background: #2a4c6e;
+}
+
+/* Add these styles for the menu list */
+.menu-list {
+    margin-top: 40px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.menu-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sort-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.selection-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#deleteSelectedBtn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+.menu-items-table input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.menu-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.menu-items-table th,
+.menu-items-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu-items-table th {
+    background: #f8f9fa;
+    font-weight: bold;
+    position: relative;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.menu-items-table th:hover {
+    background-color: #f0f0f0;
+}
+
+.sort-indicator {
+    position: absolute;
+    right: 5px;
+    color: #666;
+}
+
+.menu-items-table th.sorted-asc .sort-indicator {
+    content: '↑';
+}
+
+.menu-items-table th.sorted-desc .sort-indicator {
+    content: '↓';
+}
+
+.menu-items-table tr:hover {
+    background: #f5f5f5;
+}
+
+.delete-btn {
+    padding: 4px 8px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
+
+.menu-items-table td:last-child {
+    text-align: center;
+}
+
+.edit-btn {
+    padding: 4px 8px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.edit-btn:hover {
+    background: #218838;
+}
+
+.menu-items-table th[data-sort] {
+    cursor: pointer;
+}
+
+.menu-items-table th[data-sort]:hover {
+    background-color: #f0f0f0;
+}
+
+.sort-indicator {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+/* Make the Actions column buttons fit better */
+.menu-items-table td:last-child {
+    white-space: nowrap;
+    min-width: 120px;
+}
+
+.recover-btn {
+    padding: 8px 16px;
+    background: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.recover-btn:hover {
+    background: #138496;
+}
+
+/* Search box styling */
+.search-box {
+    flex: 1;
+    max-width: 300px;
+    margin-right: var(--spacing-md);
+}
+
+.search-input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--system-gray5);
+    border-radius: 10px;
+    font-size: var(--font-size-body);
+}
+
+.action-btn {
+    background-color: var(--system-blue);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: var(--font-size-subhead);
+    margin-left: var(--spacing-sm);
+}
+
+.import-btn {
+    background-color: var(--system-green);
+}
+
+/* Empty state styling */
+.empty-state {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--system-gray1);
+}
+
+/* TVA Section Styling */
+.vat-selector {
+    display: inline-flex;
+    background: var(--system-gray6);
+    border-radius: 8px;
+    padding: 2px;
+    margin: var(--spacing-xs) 0;
+}
+
+.vat-option {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 6px;
+    font-size: var(--font-size-footnote);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+}
+
+.vat-option.selected {
+    background-color: var(--system-background);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Price Display */
+.price-display {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    margin: var(--spacing-sm) 0;
+}
+
+.price-group {
+    flex: 1;
+}
+
+.price-label {
+    font-size: var(--font-size-caption);
+    color: var(--system-gray1);
+    margin-bottom: var(--spacing-2xs);
+}
+
+.price-value {
+    font-size: var(--font-size-title3);
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .price-display {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .menu-items-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Additional styles for the stock form */
+.price-display {
+    background: var(--system-gray6);
+    padding: var(--spacing-sm);
+    border-radius: 8px;
+}
+
+.price-value {
+    font-size: var(--font-size-title3);
+    font-weight: 600;
+    color: var(--system-blue);
+}
+
+.form-actions {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--system-gray5);
+}
+
+/* Real-time calculation feedback */
+.price-display.updating {
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Form Sections */
+.sectioned-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.form-section {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: var(--spacing-lg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-title3);
+    font-weight: 600;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+/* Calculated Values */
+.calculated-value {
+    font-size: var(--font-size-title3);
+    padding: var(--spacing-sm);
+    background: var(--system-gray6);
+    border-radius: 8px;
+    text-align: right;
+}
+
+.highlight-value {
+    color: var(--system-green);
+    font-weight: 600;
+    font-size: var(--font-size-title2);
+    background: var(--system-green-light);
+}
+
+.calculations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.calculation-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+/* Form Controls */
+.form-control {
+    width: 100%;
+    height: 44px;
+    padding: 0 var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: var(--font-size-body);
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--system-blue);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+/* Submit Button */
+.submit-button {
+    background: var(--system-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: var(--spacing-md);
+}
+
+.submit-button:hover {
+    background: var(--system-blue-dark);
+} 

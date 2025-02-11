@@ -1,0 +1,85 @@
+.orders-page {
+    padding: 2rem;
+}
+
+.orders-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.order-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.order-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.order-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.order-status.pending {
+    background: var(--warning-bg);
+    color: var(--warning);
+}
+
+.order-status.preparing {
+    background: var(--info-bg);
+    color: var(--info);
+}
+
+.order-status.ready {
+    background: var(--success-bg);
+    color: var(--success);
+}
+
+.order-status.delivered {
+    background: var(--primary-bg);
+    color: var(--primary);
+}
+
+.order-status.paid {
+    background: var(--surface-variant);
+    color: var(--text-secondary);
+}
+
+.order-content {
+    margin-bottom: 1rem;
+}
+
+.order-content p {
+    margin: 0.5rem 0;
+    color: var(--text-secondary);
+}
+
+.order-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+    .orders-page {
+        padding: 1rem;
+    }
+    
+    .order-actions {
+        flex-direction: column;
+    }
+} 

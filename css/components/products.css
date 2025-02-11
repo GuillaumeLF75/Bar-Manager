@@ -1,0 +1,130 @@
+.products-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.product-ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.ingredient-tag {
+    background: var(--background);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.negative-margin {
+    color: var(--error);
+}
+
+/* Formulaire d'ingrédients */
+.ingredients-section {
+    margin: var(--spacing-lg) 0;
+}
+
+.ingredients-section h4 {
+    margin-bottom: var(--spacing-md);
+}
+
+.ingredient-row {
+    display: grid;
+    grid-template-columns: 1fr 100px 40px;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ingredient-row {
+        grid-template-columns: 1fr 80px 40px;
+    }
+}
+
+.price-info,
+.margin-info {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.ingredients-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+.ingredients-list li {
+    padding: var(--spacing-xs) 0;
+}
+
+/* Form styles */
+.form-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.margins-display {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--background);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.ingredients-list {
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-md);
+    background: var(--background);
+    border-radius: 4px;
+}
+
+.ingredient-row .btn-icon {
+    padding: var(--spacing-xs);
+} 

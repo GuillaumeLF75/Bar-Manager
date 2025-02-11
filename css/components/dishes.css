@@ -1,0 +1,217 @@
+/* Layout */
+.dishes-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+/* Grid View */
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+}
+
+/* Card Styles */
+.dish-card {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dish-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.dish-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.dish-header h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Badges pour catégories */
+.badge.entrees { background: #FF9800; }
+.badge.plats { background: #F44336; }
+.badge.desserts { background: #E91E63; }
+.badge.snacks { background: #9C27B0; }
+
+.dish-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.dish-ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin: var(--spacing-sm) 0;
+}
+
+.ingredient-tag {
+    background: var(--background);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.dish-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.dish-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-xs);
+    margin-top: auto;
+    padding-top: var(--spacing-sm);
+}
+
+/* Table View */
+.dishes-table {
+    background: var(--surface);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.dish-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 100px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.dish-row:hover {
+    background: var(--background);
+}
+
+.header-row {
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+/* Modal Specific */
+.preparation-section {
+    margin: var(--spacing-lg) 0;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border);
+}
+
+.preparation-section h4 {
+    margin-bottom: var(--spacing-md);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .dish-row {
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 80px;
+    }
+    
+    .dish-row [data-label="Temps"] {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .dish-row {
+        grid-template-columns: 2fr 1fr 1fr 1fr 80px;
+    }
+    
+    .dish-row [data-label="Prix TTC"],
+    .dish-row [data-label="Coût"] {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .dishes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dish-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md);
+    }
+
+    .header-row {
+        display: none;
+    }
+
+    .dish-row > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dish-row > div::before {
+        content: attr(data-label);
+        font-weight: bold;
+    }
+
+    .dish-actions {
+        justify-content: flex-start;
+    }
+}
+
+/* Form Specific */
+.quantity-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.quantity-group input {
+    flex: 1;
+}
+
+.quantity-group .unit {
+    min-width: 30px;
+    color: var(--text-secondary);
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dish-card {
+    animation: slideIn 0.3s ease-out;
+} 

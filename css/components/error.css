@@ -1,0 +1,18 @@
+.error-page {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.error-page h1 {
+    color: var(--error);
+    margin-bottom: 1rem;
+}
+
+.error-page pre {
+    background: var(--surface-variant);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-top: 1rem;
+} 

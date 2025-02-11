@@ -1,0 +1,50 @@
+/* Layout principal */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    background: var(--background);
+}
+
+/* Container principal */
+#app {
+    flex: 1;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+/* En-têtes de page */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: var(--text-primary);
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .main-menu {
+        height: auto;
+        width: 100%;
+    }
+
+    #app {
+        height: auto;
+    }
+} 

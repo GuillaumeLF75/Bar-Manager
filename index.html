@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Manager</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components/navigation.css">
+    <link rel="stylesheet" href="css/components/home.css">
+    <link rel="stylesheet" href="css/components/ingredients.css">
+    <link rel="stylesheet" href="css/components/orders.css">
+    <link rel="stylesheet" href="css/components/stats.css">
+    <link rel="stylesheet" href="css/components/not-found.css">
+    <link rel="stylesheet" href="css/components/error.css">
+    <link rel="stylesheet" href="css/components/cocktails.css">
+</head>
+<body>
+    <!-- Structure principale -->
+    <nav class="sidebar">
+        <div class="brand">
+            <h1>Bar Manager</h1>
+        </div>
+        
+        <div class="nav-items">
+            <a href="#home" class="nav-item" data-route="home">
+                🏠 Accueil
+            </a>
+            <a href="#ingredients" class="nav-item" data-route="ingredients">
+                🧂 Ingrédients
+            </a>
+            <a href="#cocktails" class="nav-item" data-route="cocktails">
+                🍸 Cocktails
+            </a>
+            <a href="#orders" class="nav-item" data-route="orders">
+                📝 Commandes
+            </a>
+            <a href="#stats" class="nav-item" data-route="stats">
+                📊 Statistiques
+            </a>
+        </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main id="app"></main>
+
+    <!-- Utilitaires -->
+    <script src="js/utils/database.js"></script>
+    <script src="js/utils/ui.js"></script>
+    <script src="js/utils/calculations.js"></script>
+
+    <!-- Composants -->
+    <script src="js/components/HomeManager.js"></script>
+    <script src="js/components/IngredientsManager.js"></script>
+    <script src="js/components/CocktailsManager.js"></script>
+    <script src="js/components/OrdersManager.js"></script>
+    <script src="js/components/StatsManager.js"></script>
+    <script src="js/components/NotFoundManager.js"></script>
+
+    <!-- Router (doit être chargé après les composants) -->
+    <script src="js/router.js"></script>
+
+    <!-- Initialisation -->
+    <script>
+        // Initialize application
+        DATABASE.initialize();
+        Router.initialize();
+    </script>
+</body>
+</html> 
