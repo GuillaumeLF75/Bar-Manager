@@ -1,4 +1,4 @@
-class Analytics {
+class AnalyticsManager {
     static async initialize() {
         this.setupCharts();
         this.loadData();
@@ -63,4 +63,4 @@ class Analytics {
 }
 
 // Initialisation
-document.addEventListener('DOMContentLoaded', () => Analytics.initialize()); 
+document.addEventListener('DOMContentLoaded', () => AnalyticsManager.initialize()); 

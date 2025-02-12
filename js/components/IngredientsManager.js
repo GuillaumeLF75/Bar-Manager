@@ -9,6 +9,7 @@ class IngredientsManager {
 
     static initialize() {
         console.log('IngredientsManager initializing...');
+        this.viewMode = localStorage.getItem('ingredientsViewMode') || 'grid';
         this.loadIngredients();
         this.setupEventListeners();
     }
@@ -17,15 +18,25 @@ class IngredientsManager {
         return `
             <div class="ingredients-page">
                 <header class="page-header">
-                    <h1>Gestion des ingrédients</h1>
-                    <div class="header-actions">
+                    <div class="header-main">
+                        <h1>Ingrédients</h1>
                         <button class="btn btn-primary" onclick="IngredientsManager.showAddModal()">
                             + Nouvel ingrédient
                         </button>
                     </div>
+                    <div class="view-controls">
+                        <button class="btn ${this.viewMode === 'grid' ? 'active' : ''}" 
+                                onclick="IngredientsManager.setViewMode('grid')">
+                            📱 Mosaïque
+                        </button>
+                        <button class="btn ${this.viewMode === 'list' ? 'active' : ''}" 
+                                onclick="IngredientsManager.setViewMode('list')">
+                            📋 Liste
+                        </button>
+                    </div>
                 </header>
-                
-                <div class="ingredients-grid">
+
+                <div class="ingredients-container ${this.viewMode}">
                     ${this.renderIngredients()}
                 </div>
 
@@ -119,7 +130,7 @@ class IngredientsManager {
             console.log('Deleting ingredient:', id);
             DATABASE.ingredients.delete(id);
             this.loadIngredients();
-            Router.refreshPage();
+            router.refreshPage();
             UI.showToast('Ingrédient supprimé avec succès', 'success');
         }
     }
@@ -143,7 +154,7 @@ class IngredientsManager {
         DATABASE.ingredients.add(ingredient);
         this.loadIngredients();
         UI.hideModal('addIngredientModal');
-        Router.refreshPage();
+        router.refreshPage();
         UI.showToast('Ingrédient ajouté avec succès', 'success');
     }
 
@@ -180,6 +191,12 @@ class IngredientsManager {
     static selectSuggestion(value) {
         document.getElementById('ingredientName').value = value;
         document.getElementById('suggestions').style.display = 'none';
+    }
+
+    static setViewMode(mode) {
+        this.viewMode = mode;
+        localStorage.setItem('ingredientsViewMode', mode);
+        router.refreshPage();
     }
 }
 

@@ -3,14 +3,21 @@
   "version": "1.0.0",
   "main": "analytics.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
     "express": "^4.21.2",
+    "vite": "^6.1.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
     "ws": "^8.18.0"
   }
 }

@@ -2,51 +2,85 @@
     padding: 2rem;
 }
 
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
 .cocktails-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
 }
 
 .cocktail-card {
     background: var(--surface);
     border-radius: 12px;
     padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.cocktail-card h3 {
-    margin: 0 0 1rem 0;
-    color: var(--primary);
-    font-size: 1.3rem;
+.cocktail-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.cocktail-details {
-    margin-bottom: 1.5rem;
-}
-
-.price-info {
-    background: var(--surface-variant);
-    padding: 1rem;
-    border-radius: 8px;
+.cocktail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
 }
 
-.price-info p {
-    margin: 0.5rem 0;
-    color: var(--text-secondary);
+.cocktail-header h3 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primary);
+    padding: 0.5rem 1rem;
+    background: var(--primary-container);
+    border-radius: 20px;
+}
+
+.ingredients-list {
+    margin: 1rem 0;
 }
 
 .ingredients-list h4 {
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.75rem 0;
     color: var(--text-secondary);
     font-size: 1rem;
 }
 
 .ingredients-list p {
-    margin: 0.25rem 0;
+    margin: 0.5rem 0;
     color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cost-info {
+    background: var(--surface-variant);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.cost-info p {
+    margin: 0.25rem 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
 }
 
 .cocktail-actions {
@@ -58,20 +92,55 @@
 /* Formulaire d'ajout */
 .ingredient-row {
     display: grid;
-    grid-template-columns: 1fr 100px 40px;
+    grid-template-columns: 1fr auto auto;
     gap: 1rem;
+    align-items: center;
     margin-bottom: 1rem;
+    background: var(--surface-variant);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.quantity-input {
+    position: relative;
+    display: flex;
     align-items: center;
 }
 
-.ingredient-select {
-    width: 100%;
-}
-
 .ingredient-quantity {
-    width: 100%;
+    width: 80px;
+    padding-right: 35px;
 }
 
+.unit-display {
+    position: absolute;
+    right: 8px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.btn-danger {
+    padding: 0.5rem;
+    background: var(--error-bg);
+    color: var(--error);
+}
+
+.btn-danger:hover {
+    background: var(--error);
+    color: white;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: var(--surface);
+    border-radius: 12px;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+/* Modal Specific */
 .cost-summary {
     background: var(--surface-variant);
     padding: 1rem;
@@ -89,9 +158,16 @@
     color: var(--text-primary);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .cocktails-page {
         padding: 1rem;
+    }
+
+    .page-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
     }
 
     .cocktails-grid {
@@ -99,10 +175,120 @@
     }
 
     .ingredient-row {
-        grid-template-columns: 1fr 80px 40px;
+        grid-template-columns: 1fr;
     }
 
     .cocktail-actions {
         flex-direction: column;
     }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.cocktail-card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Ajoutez ces styles à votre fichier CSS */
+.quantity-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.ingredient-quantity {
+    width: 80px;
+}
+
+.unit-select {
+    width: 70px;
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+.ingredient-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    background: var(--surface-variant);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .ingredient-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .quantity-wrapper {
+        width: 100%;
+    }
+    
+    .ingredient-quantity {
+        flex: 1;
+    }
+}
+
+/* Ajoutez ces styles */
+.ingredients-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ingredients-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.ingredients-list li:last-child {
+    border-bottom: none;
+}
+
+.ingredient-name {
+    color: var(--text-primary);
+}
+
+.ingredient-quantity {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.cost-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.25rem 0;
+}
+
+.margin-high { color: var(--success); }
+.margin-good { color: var(--primary); }
+.margin-medium { color: var(--warning); }
+.margin-low { color: var(--error); }
+
+.price-tag {
+    background: var(--primary-container);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.btn-edit {
+    background: var(--surface-variant);
+}
+
+.btn-edit:hover {
+    background: var(--primary-container);
 } 

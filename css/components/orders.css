@@ -4,15 +4,14 @@
 
 .orders-list {
     display: grid;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 2rem;
 }
 
 .order-card {
     background: var(--surface);
     border-radius: 12px;
     padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .order-header {
@@ -20,52 +19,42 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
 }
 
 .order-header h3 {
     margin: 0;
-    font-size: 1.2rem;
-}
-
-.order-status {
-    padding: 0.25rem 0.75rem;
-    border-radius: 1rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.order-status.pending {
-    background: var(--warning-bg);
-    color: var(--warning);
-}
-
-.order-status.preparing {
-    background: var(--info-bg);
-    color: var(--info);
-}
-
-.order-status.ready {
-    background: var(--success-bg);
-    color: var(--success);
-}
-
-.order-status.delivered {
-    background: var(--primary-bg);
     color: var(--primary);
 }
 
-.order-status.paid {
+.order-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.order-items {
+    margin: 1rem 0;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-total {
     background: var(--surface-variant);
-    color: var(--text-secondary);
-}
-
-.order-content {
-    margin-bottom: 1rem;
-}
-
-.order-content p {
-    margin: 0.5rem 0;
-    color: var(--text-secondary);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    text-align: right;
 }
 
 .order-actions {
@@ -74,11 +63,41 @@
     justify-content: flex-end;
 }
 
+.order-item-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    background: var(--surface-variant);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.item-quantity {
+    width: 80px;
+}
+
+.btn-success {
+    background: var(--success-container);
+    color: var(--success);
+}
+
+.btn-success:hover {
+    background: var(--success);
+    color: white;
+}
+
 @media (max-width: 768px) {
     .orders-page {
         padding: 1rem;
     }
-    
+
+    .order-item-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
     .order-actions {
         flex-direction: column;
     }

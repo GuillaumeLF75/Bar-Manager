@@ -232,7 +232,7 @@ class StockManager {
 
         UI.hideModal('stockModal');
         UI.showToast('Mouvement de stock enregistré', 'success');
-        Router.refreshPage();
+        router.refreshPage();
     }
 
     static loadStockHistory() {

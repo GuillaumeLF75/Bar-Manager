@@ -1,4 +1,4 @@
-class Analytics {
+class AnalyticsManager {
     static initialize() {
         this.loadData();
         this.setupCharts();
